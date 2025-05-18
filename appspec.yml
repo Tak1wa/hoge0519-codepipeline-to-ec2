@@ -2,3 +2,12 @@ version: 0.1
 files:
   - source: /index.html
     destination: /var/www/html/
+scripts:
+  BeforeDeploy:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: myuser
+  AfterDeploy:
+    - location: scripts/start_server
+      timeout: 300
+      runas: myuser
